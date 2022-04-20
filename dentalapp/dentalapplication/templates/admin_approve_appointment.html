@@ -1,0 +1,51 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block title %}
+Pending Appointments
+{% endblock title %}
+{% block content %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}" role="alert" style="text-align: center;">
+    {{ message }}
+  </div>
+{% endfor %}
+</div>
+<h1 class="text-center" style="margin-top: 40px;">Pending Appointments</h1>
+<div style="margin-top: 40px;">
+    <div class="panel panel-primary">
+      <table class="table table-hover" id="example">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Service</th>
+            <th>Doctor</th>
+            <th>Description</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        {% for a in appointment %}
+        <tr>
+          <td> {{a.patientUser}}</td>
+          <td>{{a.date}}</td>
+          <td>{{a.time}}</td>
+          <td>{{a.service}}</td>
+          <td>{{a.doctor}}</td>
+          <td>{{a.description}}</td>
+          <form method='get' action ='#'>
+          {%if a.status == 0 %}
+          <td> <a class="btn btn-success btn-sm" onclick="return confirm('Are you sure you want to approve this appointment?')"
+            name="approve_button" href="{% url 'approve_appointment' a.id  %}">Approve</a>
+            <a class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to reject this appointment?')"
+              name="reject_button" href="{% url 'reject_appointment' a.id  %}">Reject</a></td>
+          {% endif %}
+          </form>        
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  <a type="button" class="btn btn-info" href="/admin_view_appointment"  style="margin-left: 60%; width: 19%; margin-bottom: 10%;" >All Appointments</a>
+  <a type="button" class="btn btn-info" href="/admin_book_appointment"  style="width: 19%; margin-bottom: 10%;" >Book an Appointment</a>
+</div>
+  {% endblock content %}

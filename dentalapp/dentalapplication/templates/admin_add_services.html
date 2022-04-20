@@ -1,0 +1,30 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block title %}
+Add Services
+{% endblock title %}
+{% block content %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}" role="alert" style="text-align: center;">
+    {{ message }}
+  </div>
+{% endfor %}
+</div>
+<style>
+    .form-control{
+        width: 50%;
+        display: inline-block;
+    }
+</style>
+<h1 class="text-center" style="margin-top: 40px;">Add Services</h1>
+<div style="width: 60%; margin-left: 20%; margin-top: 4%;">
+    <form action="" method="POST" class="text-center">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button style="margin-bottom: 80px;" type="submit" value="Submit" class="btn btn-info" onclick="return confirm('Are you sure you want to submit?')">Submit</button>
+        <br>
+    </form>
+</div>
+{% endblock content %}

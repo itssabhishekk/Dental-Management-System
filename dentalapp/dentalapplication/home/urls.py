@@ -1,0 +1,50 @@
+from unicodedata import name
+from django.contrib import admin
+from django.urls import path
+from home import views
+
+urlpatterns = [
+    path('', views.home, name='home'),
+    path("login", views.login, name='login'),
+    path("signup", views.signup, name='signup'),
+    path("logout", views.logout, name="logout"),
+
+    path('userbase', views.userbase, name='userbase'),
+    path('userdashboard', views.userdashboard,name='userdashboard'),
+    path('userappointment', views.userappointment,name='userappointment'),
+    path('user_book_appointment', views.user_book_appointment,name='user_book_appointment'),
+    path('user_view_appointment', views.user_view_appointment,name='user_view_appointment'),
+    path('user_view_doctors', views.user_view_doctors,name='user_view_doctors'),
+    path('user_view_reports', views.user_view_reports,name='user_view_reports'),
+    path('user_view_profile', views.user_view_profile,name='user_view_profile'),
+    path('user_edit_profile', views.user_edit_profile,name='user_edit_profile'),
+    path('user_cancel_appointment/<int:pk>/', views.user_cancel_appointment,name='user_cancel_appointment'),
+    path('user_view_services', views.user_view_services,name='user_view_services'),
+
+    path('adminlogin', views.adminlogin,name='adminlogin'),
+    path('adminbase', views.adminbase,name='adminbase'),
+    path('admindashboard', views.admindashboard,name='admindashboard'),
+    path('adminappointment', views.adminappointment,name='adminappointment'),
+    path('admin_view_appointment', views.admin_view_appointment,name='admin_view_appointment'),
+    path('admin_book_appointment', views.admin_book_appointment,name='admin_book_appointment'),
+    path('admin_approve_appointment', views.admin_approve_appointment,name='admin_approve_appointment'),
+    path('admin_view_doctors', views.admin_view_doctors,name='admin_view_doctors'),
+    path('admin_add_doctors', views.admin_add_doctors,name='admin_add_doctors'),
+    path('admin_view_reports', views.admin_view_reports,name='admin_view_reports'),
+    path('admin_add_reports', views.admin_add_reports,name='admin_add_reports'),
+    path('admin_view_users', views.admin_view_users,name='admin_view_users'),
+    path('admin_add_services', views.admin_add_services,name='admin_add_services'),
+    path('admin_view_services', views.admin_view_services,name='admin_view_services'),
+    path('delete_doctor/<int:pk>/', views.delete_doctor,name='delete_doctor'),
+    path('update_doctor/<int:pk>/', views.update_doctor,name='update_doctor'),
+    path('delete_report/<int:pk>/', views.delete_report,name='delete_report'),
+    path('update_report/<int:pk>/', views.update_report,name='update_report'),
+    path('delete_appointment/<int:pk>/', views.delete_appointment,name='delete_appointment'),
+    path('delete_patientUser/<int:pk>/', views.delete_patientUser,name='delete_patientUser'),
+    path('delete_service/<int:pk>/', views.delete_service,name='delete_service'),
+    path('update_service/<int:pk>/', views.update_service,name='update_service'),
+    path('approve_appointment/<int:pk>/', views.approve_appointment,name='approve_appointment'),
+    path('reject_appointment/<int:pk>/', views.reject_appointment,name='reject_appointment'),
+    path('finish_appointment/<int:pk>/', views.finish_appointment,name='finish_appointment'),
+    path('admin_cancel_appointment/<int:pk>/', views.admin_cancel_appointment,name='admin_cancel_appointment'),
+]

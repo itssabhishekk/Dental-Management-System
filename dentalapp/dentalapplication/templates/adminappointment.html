@@ -1,0 +1,117 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block title %}
+Appointments
+{% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+<style type="text/css">
+    a:link {
+        text-decoration: none;
+    }
+
+    .menu {
+        top: 50px;
+    }
+
+    h6 {
+        color: white;
+    }
+
+    .order-card {
+        color: #fff;
+    }
+
+    .bg-c-blue {
+        background: linear-gradient(45deg, #4099ff, #73b4ff);
+    }
+
+    .bg-c-green {
+        background: linear-gradient(45deg, #2ed8b6, #59e0c5);
+    }
+
+    .bg-c-yellow {
+        background: linear-gradient(45deg, #FFB64D, #ffcb80);
+    }
+
+    .bg-c-pink {
+        background: linear-gradient(45deg, #FF5370, #ff869a);
+    }
+
+
+    .card {
+        border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+        box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+        border: none;
+        margin-bottom: 30px;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .card .card-block {
+        padding: 25px;
+    }
+
+    .order-card i {
+        font-size: 26px;
+    }
+
+    .f-left {
+        float: left;
+    }
+
+    .f-right {
+        float: right;
+    }
+</style>
+
+<h1 class="text-center" style="margin-top: 40px;">Appointments</h1>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container" style="margin-top: 100px"> 
+    <div class="row">
+        <div class="col-xl-4 col-xl-4">
+            <a href="/admin_view_appointment">
+            <div class="card bg-c-blue order-card">
+                <div class="card-block">
+                        <h6 class="m-b-20">View Appointment</h6>
+                    <br>
+                    <h2 class="text-right"><i class="fas fa-calendar f-left"></i></h2>
+
+                </div>
+            </div>
+        </a>
+
+        </div>
+
+        <div class="col-md-4 col-xl-4">
+            <a href="/admin_book_appointment">
+            <div class="card bg-c-green order-card">
+                <div class="card-block">
+                        <h6 class="m-b-20">Book Appointment</h6>
+                    <br>
+                    <h2 class="text-right"><i class="fas fa-book-medical f-left"></i></h2>
+                </div>
+            </div>
+        </a>
+
+        </div>
+
+        <div class="col-md-4 col-xl-4">
+            <a href="/admin_approve_appointment">
+            <div class="card bg-c-yellow order-card">
+                <div class="card-block">
+                        <h6 class="m-b-20">Approve Appointment</h6>
+                    <br>
+                    <h2 class="text-right"><i class="fas fa-check-circle f-left"></i></h2>
+                </div>
+            </div>
+        </a>
+
+        </div>
+
+
+    </div>
+</div>
+{% endblock content %}

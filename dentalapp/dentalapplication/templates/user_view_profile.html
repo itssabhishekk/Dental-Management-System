@@ -1,0 +1,51 @@
+{% extends 'userbase.html' %}
+{% load static %}
+{% block title %}
+Profile
+{% endblock title %}
+{% block content %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}" role="alert" style="text-align: center;">
+    {{ message }}
+  </div>
+{% endfor %}
+<style>
+    .profile{
+        background-color: #EBF6FF;
+        width: 85%;
+        height: 75%;
+        margin-left: 8%;
+        line-height: 200%;
+    }
+</style>
+<h1 class="text-center" style="margin-top: 3%; margin-bottom: 3%;">Your Profile</h1>
+<div class="profile">
+    {% for p in Patient %}
+    <div class="row">
+        <div class="col-8" style="padding-left: 8%; padding-top: 2%;">
+            <h4>Your Information</h4>
+            <br>
+            <h9><strong>Full Name: </strong>{{ p.user.first_name }} {{ p.user.last_name }}</h9>
+            <br>
+            <h9><strong>Username: </strong>{{ p.user.username }}</h9>
+            <br>
+            <h9><strong>Email: </strong>{{ p.user.email }}</h9>
+            <br>
+            <h9><strong>Date of Birth: </strong>{{ p.date_of_birth }}</h9>
+            <br>
+            <h9><strong>Phone Number: </strong>{{ p.phone_number }}</h9>
+            <br>
+            <h9><strong>Address: </strong>{{ p.address }}</h9>
+            <br><br>
+            <a class="btn btn-outline-secondary" href="/user_edit_profile">Edit Profile</a>
+
+        </div>
+        <div class="col-4" style="padding: 2% 5% 0 0;">
+            <img src="{% static p.profile_picture .url %}" width="100%" height="80%" class="card-img-top" alt="...">
+        </div>
+      </div>
+      {% endfor %}
+
+</div>
+
+{% endblock content %}

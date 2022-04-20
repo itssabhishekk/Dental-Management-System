@@ -1,0 +1,22 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block title %}
+Add Users
+{% endblock title %}
+{% block content %}
+<h1 class="text-center" style="margin-top: 40px;">Add Users</h1>
+{% if submitted %}
+    Report added successfully.
+
+{% else %}
+
+    <form action="" method="POST" class="text-center">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button style="margin-bottom: 80px;" type="submit" value="Submit" class="btnSubmit">Submit</button>
+        <br>
+    </form>
+{% endif %}
+{% endblock content %}

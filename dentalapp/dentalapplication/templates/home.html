@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="keywords" content="Django-HTML">
+	<meta name="author" content="Abhishek Rokaya">
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title> Home | Phulchowki Dental Clinic</title>
+
+  </head>
+  <body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+		  <a class="navbar-brand" href="#"><img src="static/img/logo2.png" width="300px" height="75px"></a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div  id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			  <li class="nav-item">
+				<a class="nav-link active" aria-current="page" href="/">Home</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="#about">About Us</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="#services">Services</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="#contact">Contact Us</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="/login">Login</a>
+			  </li>
+			</ul>
+		  </div>
+		</div>
+	  </nav>
+      <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+	<section id="home" class="clearfix home-section">
+		<div class="section-container">
+			<div class="container">
+				<div class="row">
+					<div class="intro-info col-xl-7 col-lg-7 col-md-7 col-sm-12">
+						<h1> A BEAUTIFUL LIFE STARTS WITH A BEAUTIFUL SMILE </h1>
+						<p> Care in an environment of excellence </p>
+						<div class="buttons">
+							<a href="/login" class="butn">Login</a>
+							<a href="/signup" class="butn">Register</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="about" class="clearfix about-section">
+		<div class="section-container">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+						<img src="static/img/doctor.png" alt="Dr. Michael Martinez" title="Dr. Michael Martinez"/>
+					</div>
+
+					<div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
+						<div class="content-top-space"></div>
+						<h2> Committed To Dental Excellence </h2>
+						<div class="about-title"> We create beautiful and brighter smiles </div>
+						<div class="about-description">
+							<p>
+								Urna habitasse imperdiet! Aut, deleniti nisl, varius? Nunc, iure iure nunc sit mi ducimus atque nostrum iure ducimus quae dolore. Massa sapien at do ipsum nostra adipisicing.
+							</p>
+							<p>
+								rutrum fugiat doloribus, dolor, ipsa commodi doloremque do senectus neque molestiae dis nisi euismod, diam illo incididunt dignissim expedita.
+							</p>
+						</div>
+						<h4 class="dr-name"> Dr. Prasamsha Khadka </h4>
+						<p class="dr-prof"> Dental Surgeon </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="services" class="clearfix service-section">
+		<div class="section-container">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+						<div class="content-top-space"></div>
+						<h2> Complete Care On Your Schedule </h2>
+						<div class="service-title"> Bringing life to your smile </div>
+					</div>
+				</div>
+
+				<div class="content-top-space"></div>
+
+				<div class="row">
+					<div class="col-xl-3 col-lg-4 col-md-2 col-sm-12">
+						<div class="services-wrapper">
+							<img src="static/img/team-free-img.png" alt="Team" title="Team"/>
+
+							<h5> Highly trained dental team </h5>
+
+							<p> Litora nostrum ab iaculis sagittis, dolores! Sociis vestibulum mus aperiam! Assumenda! </p>
+						</div>
+					</div>
+
+					<div class="col-xl-3 col-lg-4 col-md-2 col-sm-12">
+						<div class="services-wrapper">
+							<img src="static/img/advance-free-img.png" alt="Treatment" title="Treatment"/>
+
+							<h5> Advance treatment </h5>
+
+							<p> Litora nostrum ab iaculis sagittis, dolores! Sociis vestibulum mus aperiam! Assumenda! </p>
+						</div>
+					</div>
+
+					<div class="col-xl-3 col-lg-4 col-md-2 col-sm-12">
+						<div class="services-wrapper">
+							<img src="static/img/results-free-img.png" alt="Results" title="Results"/>
+
+							<h5> Guaranteed results </h5>
+
+							<p> Litora nostrum ab iaculis sagittis, dolores! Sociis vestibulum mus aperiam! Assumenda! </p>
+						</div>
+					</div>
+
+					<div class="col-xl-3 col-lg-4 col-md-2 col-sm-12">
+						<div class="services-wrapper">
+							<img src="static/img/tech-free-img.png" alt="Equipment" title="Equipment"/>
+
+							<h5> Modern tech & equipment </h5>
+
+							<p> Litora nostrum ab iaculis sagittis, dolores! Sociis vestibulum mus aperiam! Assumenda! </p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="offer-cta">
+		<div class="section-container">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-8 col-lg-8 col-md-6 col-sm-12">
+						<div class="cta-heading"> We love to see you smile </div>
+						<div class="cta-title"> 10% Off For All Our Users. </div>
+					</div>
+
+					<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+						<div style="margin-top:10%; margin-left: 25%;">
+							<a href="/signup" class="butn"> Register Now </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="work-sections">
+		<div class="section-container">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 image-wrapper">
+							<img src="static/img/lab-free-img.jpg" alt="Laboratory" />
+						</div>
+
+						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 image-wrapper">
+							<img src="static/img/machine-free-img.jpg" alt="Laboratory" />
+						</div>
+
+						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 image-wrapper">
+							<img src="static/img/treatment-free-img.jpg" alt="Laboratory" />
+						</div>
+
+						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 image-wrapper">
+							<img src="static/img/checkup-free-img.jpg" alt="Laboratory" />
+						</div>
+					</div>
+
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+						<div class="content-top-space"></div>
+						<h2> Dentistry For Today’s Lifestyle </h2>
+						<div class="works-sub-title"> We have all your dental needs covered </div>
+
+						<ul class="workings-first-list">
+							<li>
+								<span>Dental Exams & Cleanings</span>
+							</li>
+
+							<li>
+								<span>Dental X-Rays</span>
+							</li>
+
+							<li>
+								<span>Cosmetic Dentistry</span>
+							</li>
+
+							<li>
+								<span>Periodontal Disease</span>
+							</li>
+						</ul>
+
+						<ul class="workings-second-list">
+							<li>
+								<span>Root Canals</span>
+							</li>
+
+							<li>
+								<span>Extractions</span>
+							</li>
+
+							<li>
+								<span>Teeth Whitening</span>
+							</li>
+
+							<li>
+								<span>Braces & Implantse</span>
+							</li>
+						</ul>
+
+						<div class="insurance-title"> For Emergencies, Call- (977) 01-5678976 </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="reviews" class="clearfix reviews-section">
+		<div class="section-container">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+						<h2> Reviews From Our Happy Patients </h2>
+						<h6 class="review-sub-title"> Creating vibrant smiles for healthy lifestyles! </h6>
+					</div>
+				</div>
+
+				<div class="content-top-space"></div>
+
+				<div class="row">
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+						<div class="reviews-wrapper">
+							<img src="static/img/dorothy-free-img.png" alt="Ushaan" title="Ushaan"/>
+							<img src="static/img/quote-free-img.png"/>
+
+							<h5> Ushaan Shrestha, Dharan </h5>
+
+							<p> <em> “I really loved the atmosphere here. The doctors are really skilled and very friendly. I am definitely recommending everyone to visit Phulchowki Dental Clinic for all their dental services !” </em> </p>
+						</div>
+					</div>
+
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+						<div class="reviews-wrapper">
+							<img src="static/img/randy-free-img.png" alt="Ram Bahadur" title="Ram Bahadur"/>
+							<img src="static/img/quote-free-img.png"/>
+
+							<h5> Ram Bahadur, Butwal </h5>
+
+							<p> <em> “Their services is just absolutely fabulous. I had a really bad teeth and it was easily fixed without any pain by the wonderful doctors present here. The web application is also very helpful and very easy to use which makes this clinic my number one go to for any of my teeth related problems !” </em> </p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="contact" class="clearfix contact-section">
+		<div class="section-container">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+						<h2> How To Find Us </h2>
+					</div>
+				</div>
+
+				<div class="row contacts-wrapper">
+					<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+						<div>
+							<img src="static/img/map-free-img.png"/>
+							<p> Thaiba <br/> Lalitpur, Nepal </p>
+						</div>
+					</div>
+
+					<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+						<div>
+							<img src="static/img/phone-free-img.png"/>
+							<p> (977) 01-5102895 <br/> (977) 01-5102847  </p>
+						</div>
+					</div>
+
+					<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+						<div>
+							<img src="static/img/email-free-img.png"/>
+							<p> pdcdentalcare@gmail.com </p>
+						</div>
+					</div>
+				</div>
+
+				<div style="border-radius: 10px;"> 
+						<div>
+							<!-- Tag for map with Phulchowki Dental Clinic's location pinned -->
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1767.479015836289!2d85.34640751748037!3d27.625816429544248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1747d50befe9%3A0xf7bb4fe8f490a215!2sDental%20Clinic!5e0!3m2!1sen!2snp!4v1644596561862!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>						</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="clearfix footer-widgets-section">
+		<div class="section-container">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+						<img src="static/img/logo2.png" width="320px" height="80px" alt="Dental Clinic"/>
+					</div>
+				</div>
+
+				<div class="row social-icon-wrapper">
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+						<a href="#" class="social-icon"> <i class="fa fa-instagram"></i> </a>
+						<a href="#" class="social-icon"> <i class="fa fa-twitter"></i> </a>
+						<a href="#" class="social-icon"> <i class="fa fa-linkedin"></i> </a>
+						<a href="#" class="social-icon"> <i class="fa fa-google-plus"></i> </a>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</section>
+
+	<!--Start Footer-->
+	<footer itemtype="https://schema.org/WPFooter" itemscope="itemscope" class="site-footer">
+		<div class="copyright-footer">
+			Copyright © 2022 Phulchowki Dental Clinic | 19030695 <span> <a href="#"> Abhishek Rokaya</a> </span>
+		</div>
+	</footer>
+  </body>
+</html>

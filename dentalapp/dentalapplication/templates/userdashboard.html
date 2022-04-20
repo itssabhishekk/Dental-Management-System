@@ -1,0 +1,53 @@
+{% extends 'userbase.html' %}
+{% load static %}
+{% block title %}
+Dashboard
+{% endblock title %}
+{% block content %}
+<h1 class="text-center" style="margin-top: 40px; color: black;">Dashboard</h1>
+<br>
+<div style="width: 100%; height: 100%;">
+  <div class="container">
+    <div class="row">
+      <div class="col" style="margin-bottom: 40px; margin-left: 15px;">
+        <div class="card bg-light border-dark" style="width: 10rem;">
+          <div class="card-body" style="text-align: center;">
+            <h6 class="card-subtitle mb-2 text-muted">Total<br>Doctors</h6>
+            <h1 class="card-title">{{doctorscount}}</h1>
+            <a href="/user_view_doctors" class="btn btn-outline-secondary">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="margin-bottom: 40px;">
+        <div class="card bg-light border-dark" style="width: 10rem;">
+          <div class="card-body" style="text-align: center;">
+            <h6 class="card-subtitle mb-2 text-muted">Total<br>Reports</h6>
+            <h1 class="card-title">{{reportcount}}</h1>
+            <a href="/user_view_reports" class="btn btn-outline-secondary">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="margin-bottom: 40px;">
+        <div class="card bg-light border-dark" style="width: 10rem;">
+          <div class="card-body" style="text-align: center;">
+            <h6 class="card-subtitle mb-2 text-muted">Total<br>Services</h6>
+            <h1 class="card-title">{{servicecount}}</h1>
+            <a href="/user_view_services" class="btn btn-outline-secondary">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="margin-bottom: 40px;">
+        <div class="card bg-light border-dark" style="width: 10rem;">
+          <div class="card-body" style="text-align: center;">
+            <h6 class="card-subtitle mb-2 text-muted">Total Appointments</h6>
+            <h1 class="card-title">{{appointmentcount}}</h1>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Pending: {{pendingappointmentcount}}</li>
+            <a href="/user_view_appointment" class="btn btn-outline-secondary">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

@@ -1,0 +1,507 @@
+ /*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+
+* {
+    font-family: "Open Sans", sans-serif;
+}
+
+a {
+    cursor: pointer;
+}
+
+.container .white-text {
+    color: #fff;
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+
+.main-pages {
+    margin-top: 60px;
+}
+
+/*--------------------------------------------------------------
+
+/*--------------------------------------------------------------
+# Home Banner Section
+--------------------------------------------------------------*/
+.home-section {
+    padding: 120px 10px 200px;
+    background-image: url(../img/home-banner-free-img.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.3);
+}
+
+.section-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+}
+
+.intro-info h1 {
+    font-size: 42px;
+    line-height: 1.4em;
+    text-decoration: none;
+    text-align: left;
+    height: 125px;
+    word-wrap: break-word;
+    box-sizing: border-box;
+    font-weight: 600;
+    letter-spacing: 1.7px;
+    color: #202525;
+}
+
+.intro-info p {
+    color: #202525;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1;
+    margin-top: 20px;
+}
+
+.banner-button {
+    margin-top: 25px;
+    text-transform: capitalize;
+    color: #ffffff;
+    background-color: #46c93d;
+    border-radius: 5px 5px 5px 5px;
+    padding: 20px 35px 20px 035px;
+    font-size: 16px;
+    line-height: 1;
+    border: none;
+}
+
+.banner-button:hover,
+.banner-button:focus {
+    color: #ffffff;
+    background-color: #2bb721;
+}
+
+section .buttons{
+	position: absolute;
+	top:100px;
+	left:16%;
+	transform: translate(-50%,-50%);
+	z-index: 1;
+	margin-top: 10%;
+}
+
+section .butn{
+	border:1px solid black;
+	padding:13px 35px;
+	color:black;
+	text-decoration: none;
+	margin: 5px;
+	transition:0.5s;
+	position: relative;
+	overflow: hidden; /* overflowbhidden helps to hide the objects that goes out of the boundries*/
+	z-index: 1;
+	border-radius: 5px;
+}
+
+.butn::before{
+	
+	content:""; /*without the "content" before couldn't be used*/
+	position:absolute;
+	left:0;
+	width:100%;
+	height:0%;
+	background: skyblue;
+	z-index: -1; /* Z-index helps in overlapping the div over div or any thing with overlapping*/
+	transition: 0.5s; /*transition helps in showing the effects included in inserted time*/
+	top: 0;
+	border-radius: 0 0 50% 50%;
+}
+
+.butn:hover::before{
+	height: 104%;
+}
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+
+.about-section {
+    text-align: left;
+    border-bottom: solid 1px #dae7e6;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 60px 0px;
+    background-color: #fff;
+}
+
+section .content-top-space {
+    height: 95px;
+}
+
+.about-section .about-description {
+    margin-bottom: 40px;
+}
+
+section h2 {
+    line-height: 1.6em;
+    color: #3a3a3a;
+    font-weight: 600;
+    font-size: 2.3333333333333rem;
+    margin-bottom: 20px;
+}
+
+.about-section .about-title {
+    color: #54595f;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.about-section p {
+    margin-bottom: 1.6em;
+    color: #666666;
+    font-size: 15px;
+    line-height: 27px;
+}
+
+.about-section .dr-name {
+    font-size: 20px;
+    color: #3a3a3a;
+    font-weight: 600;
+}
+
+.about-section .dr-prof {
+    color: #207fdc;
+}
+
+/*--------------------------------------------------------------
+# Services Section
+--------------------------------------------------------------*/
+
+.service-section {
+    text-align: center;
+    background-color: #f3f9f9;
+    padding-bottom: 80px;
+}
+
+.service-section .service-title,
+.work-sections .works-sub-title,
+.reviews-section .review-sub-title,
+.contact-section .contact-sub-title {
+    color: #54595f;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.services-wrapper h5 {
+    line-height: 1.5em;
+    color: #3a3a3a;
+    font-weight: 600;
+    font-size: 18px;
+    margin: 25px 0;
+}
+
+.services-wrapper p {
+    color: #666666;
+    font-size: 15px;
+}
+
+/*--------------------------------------------------------------
+# Offer CTA Section
+--------------------------------------------------------------*/
+
+.offer-cta {
+    padding: 40px 0;
+    background-color: #207fdc;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+}
+
+.offer-cta .cta-heading {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.offer-cta .cta-title {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1.6em;
+}
+
+
+/*--------------------------------------------------------------
+# Works Section
+--------------------------------------------------------------*/
+
+.work-sections {
+    background-color: #f3f9f9;
+    padding: 100px 0;
+    border-bottom: 1px solid #dae7e6;
+}
+
+.work-sections h2 {
+    font-size: 2.1rem;
+}
+
+.work-sections img {
+    width: 250px;
+    height: 250px;
+}
+
+.work-sections .image-wrapper {
+    padding: unset;
+    width: unset;
+    float: left;
+    margin: 10px;
+}
+
+.work-sections ul {
+    margin: 40px 0;
+    list-style-type: square;
+}
+
+.work-sections ul.workings-first-list {
+    float: left;
+    margin-right: 60px;
+}
+
+.work-sections ul li span {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #666666;
+    padding-left: 10px;
+}
+
+.work-sections .insurance-title {
+    font-size: 20px;
+    text-transform: capitalize;
+    color: #3a3a3a;
+    font-weight: 600;
+    line-height: 1;
+}
+
+/*--------------------------------------------------------------
+# Reviews Section
+--------------------------------------------------------------*/
+
+.reviews-section {
+    text-align: center;
+    padding: 80px 0;
+}
+
+.reviews-section .review-sub-title {
+    color: #54595f;
+}
+
+.reviews-section h5 {
+    font-size: 20px;
+    color: #3a3a3a;
+    font-weight: 600;
+    line-height: 1;
+    margin: 30px;
+}
+
+.reviews-section p {
+    color: #666666;
+    margin: 25px 0px 0px 0px;
+    padding: 0px 45px 0px 45px;
+}
+
+/*--------------------------------------------------------------
+# Contact Section
+--------------------------------------------------------------*/
+
+.contact-section {
+    text-align: center;
+    padding: 80px 0 100px;
+    background-color: #f3f9f9;
+}
+
+.contact-section .contacts-wrapper {
+    margin: 60px 0;
+}
+
+.contact-section .form #sendmessage,
+.contact-section .form #errormessage {
+    color: #007bff;
+    border: 1px solid #007bff;
+    display: none;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.contact-section .form {
+    background-color: #fff;
+    margin-top: 60px;
+    text-align: center;
+    box-shadow: 0px 0px 8px 2px rgba(157,169,169,0.18);
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    padding: 40px 80px 40px 80px;
+}
+
+.contact-section .form h3 {
+    color: #3a3a3a;
+    font-weight: 600;
+    font-size: 1.6666666666667rem;
+    line-height: 1.1em;
+    margin-bottom: 40px;
+}
+
+.contact-section .form input,
+.contact-section .form textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    float: none;
+    color: #666;
+    padding: .75em;
+    height: auto;
+    margin-bottom: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #eaeaea;
+    border-radius: 2px;
+    background: #fafafa;
+    box-shadow: none;
+    box-sizing: border-box;
+    transition: all .2s linear;
+}
+
+.contact-section .form button {
+    border-radius: 5px;
+    padding: 10px 40px;
+    color: #ffffff;
+    border: none;
+    border-color: #303030;
+    background-color: #303030;
+    font-weight: 400;
+    font-size: 15px;
+    font-size: 1rem;
+}
+
+.contact-section .form button:hover {
+    color: #303030;
+    border-color: #d3d3d3;
+    background-color: #d3d3d3;
+}
+
+/*--------------------------------------------------------------
+# Footer Widgets Section
+--------------------------------------------------------------*/
+
+.footer-widgets-section {
+    padding: 50px 0;
+    background-color: #1d3349;
+    text-align: center;
+}
+
+.footer-widgets-section .social-icon-wrapper {
+    margin-top: 40px;
+}
+
+.footer-widgets-section .social-icon {
+    text-align: center;
+    padding: .5em;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    background-color: rgba(255,255,255,0);
+    line-height: 1;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+
+.footer-widgets-section .social-icon i {
+    font-size: 20px;
+}
+
+.footer-widgets-section .social-icon:not(:last-child) {
+    margin-right: 20px;
+}
+
+.footer-widgets-section .social-icon:hover {
+    background-color: #ffffff;
+}
+
+.footer-widgets-section .social-icon:hover i {
+    color: #3a3a3a;
+}
+
+footer.site-footer {
+    border-top: 1px solid #334c65;
+    padding: 40px 0;
+    background-color: #1d3349;
+    text-align: center;
+}
+
+.site-footer,
+.site-footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-signin .checkbox {
+    font-weight: 400;
+}
+
+.form-signin .form-control {
+    margin: 16px 3px;
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}

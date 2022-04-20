@@ -1,0 +1,30 @@
+{% extends 'userbase.html' %}
+{% load static %}
+{% block title %}
+Services
+{% endblock title %}
+{% block content %}
+<h1 class="text-center" style="margin-top: 40px;">Our Services</h1>
+<div style="margin-top: 40px;">
+    <div >
+      <table id="example" class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Cost</th>
+            <th>Description</th>
+
+          </tr>
+        </thead>
+        {% for s in services %}
+        <tr>
+          <td> {{s.service_name}}</td>
+          <td>{{s.cost}}</td>
+          <td>{{s.description}}</td>
+
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+{% endblock content %}

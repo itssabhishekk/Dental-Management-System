@@ -1,0 +1,36 @@
+{% extends 'userbase.html' %}
+{% load static %}
+{% block title %}
+Book Appointments
+{% endblock title %}
+{% block content %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}" role="alert" style="text-align: center;">
+    {{ message }}
+  </div>
+{% endfor %}
+</div>
+<style>
+    .form-control{
+        width: 50%;
+        display: inline-block;
+    }
+</style>
+<h1 class="text-center" style="margin-top: 40px;">Book an Appointment</h1>
+<br>
+<div style="width: 60%; margin-left: 20%;">
+    <form action="" method="POST" class="text-center">
+        {% csrf_token %}
+
+        {{ form.as_p}}
+        <script>datePickerId.min = new Date().toLocaleDateString('en-ca')</script>
+        <button type="submit" value="Submit" onclick="return confirm('Are you sure you want to book this appointment?')" class="btn btn-info">Submit</button>
+        <br />
+
+    </form>
+
+<a type="button" class="btn btn-secondary" href="/user_view_appointment" style="margin-left: 36%; margin-bottom: 15%; margin-top: 10%;" >View all appointments</a>
+</div>
+{% endblock content %}
+
+

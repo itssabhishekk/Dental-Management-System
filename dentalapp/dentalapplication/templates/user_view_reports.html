@@ -1,0 +1,67 @@
+{% extends 'userbase.html' %}
+{% load static %}
+{% block title %}
+Reports
+{% endblock title %}
+{% block content %}
+  <!-- Loading CSS for saving the table and searching it -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+
+  <!-- Loading JavaScript for saving the table and searching it-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#example1').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+          'copyHtml5',
+          'excelHtml5',
+          'csvHtml5',
+          'pdfHtml5'
+        ]
+      });
+    });
+  </script>
+<h1 class="text-center" style="margin-top: 40px;">Your Reports</h1>
+<div style="margin-top: 40px; padding-bottom:5%;">
+
+    <div class="panel panel-primary">
+      <table id="example1" class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Appointment Date</th>
+            <th>Doctor</th>
+            <th>Service</th>
+            <th>Problems</th>
+            <th>Prescription</th>
+            <th>Other Details</th>
+            <th>Total Cost</th>
+
+          </tr>
+        </thead>
+        {% for r in reports %}
+        <tr>
+          <td> {{r.appointment.patientUser}}</td>
+          <td>{{r.appointment.date}}</td>
+          <td>{{r.appointment.doctor}}</td>
+          <td>{{r.appointment.service}}</td>
+          <td>{{r.problems}}</td>
+          <td>{{r.prescription}}</td>
+          <td>{{r.other_details}}</td>
+          <td>{{r.appointment.service.cost}}</td>
+
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+{% endblock content %}
+

@@ -1,0 +1,37 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block title %}
+Book Appointments
+{% endblock title %}
+{% block content %}
+<style>
+    .form-control{
+        width: 50%;
+        display: inline-block;
+    }
+</style>
+<div style="margin-top: 10px;">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}" role="alert" style="text-align: center;">
+        {{ message }}
+      </div>
+    {% endfor %}
+    </div>
+<h1 class="text-center" style="margin-top: 40px;">Book an Appointment</h1>
+<br>
+<div style="width: 60%; margin-left: 20%;">
+    <form action="" method="POST" class="text-center">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+        <script>datePickerId.min = new Date().toLocaleDateString('en-ca')</script>
+
+        <button type="submit" value="Submit" style="margin-bottom: 3%;" class="btn btn-info">Submit</button>
+        <br />
+
+    </form>
+
+</div>
+<a type="button" class="btn btn-secondary" href="/admin_view_appointment" style="margin-left: 43%;" >View all appointments</a>
+<a type="button" class="btn btn-secondary" href="/admin_approve_appointment">Pending appointments</a>
+{% endblock content %}

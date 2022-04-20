@@ -1,0 +1,48 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block title %}
+User
+{% endblock title %}
+{% block content %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}" role="alert" style="text-align: center;">
+    {{ message }}
+  </div>
+{% endfor %}
+</div>
+<h1 class="text-center" style="margin-top: 40px;">All Users</h1>
+<div style="margin-top: 40px; padding-bottom: 8%;">
+
+    <div class="panel panel-primary">
+      <table id="example" class="table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Profile Picture</th>
+              <th>Date of Birth</th>
+              <th>Email</th>
+              <th>Username</th>
+              <th>Phone Number</th>
+              <th>Address</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          {% for p in patientUser %}
+          <tr>
+            <td> {{p.user.first_name}} {{p.user.last_name}}</td>
+            <td><img src="{% static p.profile_picture .url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+            <td>{{p.date_of_birth}}</td>
+            <td>{{p.user.email}}</td>
+            <td>{{p.user.username}}</td>
+            <td>{{p.phone_number}}</td>
+            <td>{{p.address}}</td>
+            <td><a class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to remove this User?')" href="{% url 'delete_patientUser' p.user.id  %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+            </svg></i</a></td>
+          </tr>
+          {% endfor %}
+        </table>
+    </div>
+  </div>
+{% endblock content %}

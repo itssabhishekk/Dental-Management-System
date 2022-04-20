@@ -1,0 +1,38 @@
+{% extends 'userbase.html' %}
+{% load static %}
+{% block title %}
+Doctors
+{% endblock title %}
+{% block content %}
+<h1 class="text-center" style="margin-top: 40px; margin-bottom: 40px;">Our Doctors</h1>
+  <div class="panel panel-primary">
+    
+    <div class="container">
+      <div class="row">
+        {% for d in doctors %}
+        <div class="col" style="margin-bottom: 40px;">
+
+          <div class="card text-dark bg-light mb-3" style="width: 18rem;">
+
+            <img src="{% static d.profile_picture .url %}" width="40px" height="200px" class="card-img-top" alt="...">
+            <div class="card-body">
+
+              <h5 class="card-title">Dr. {{d.full_name}}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Qualification: {{d.qualification}}</li>
+              <li class="list-group-item">Experience: {{d.experience}}</li>
+              <li class="list-group-item">Phone Number: {{d.phone_number}}</li>
+              <li class="list-group-item">Email: {{d.email}}</li>
+            </ul>
+            <div class="card-body" style="text-align: center;">
+              <a href="/user_book_appointment"  class="btn btn-outline-secondary">Book an Appointment now.</a>
+            </div>
+          </div>
+
+        </div>
+        {% endfor %}
+
+      </div>
+  </div>
+  {% endblock content %}

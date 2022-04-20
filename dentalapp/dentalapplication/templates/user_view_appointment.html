@@ -1,0 +1,60 @@
+{% extends 'userbase.html' %}
+{% load static %}
+{% block title %}
+Your Appointments
+{% endblock title %}
+
+{% block content %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}" style="text-align: center;" role="alert">
+    {{ message }}
+  </div>
+{% endfor %}
+</div>
+<h1 class="text-center" style="margin-top: 40px;">Your Appointments</h1>
+
+<div style="margin-top: 40px;">
+  <div class="panel panel-primary">
+    <table class="table table-hover" id="example">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Service</th>
+          <th>Doctor</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      {% for a in appointment %}
+      <tr>
+        <td> {{a.patientUser}}</td>
+        <td>{{a.date}}</td>
+        <td>{{a.time}}</td>
+        <td>{{a.service}}</td>
+        <td>{{a.doctor}}</td>
+        <td>{{a.description}}</td>
+        {%if a.status == 0 %}
+        <td> <button class="btn btn-sm btn-primary" disabled data-bs-toggle="button">Pending</button>
+        <a class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to cancel this appointment?')"
+        name="cancel_button" href="{% url 'user_cancel_appointment' a.id  %}">Cancel</a></td>
+        {% elif a.status == 1 %}
+        <td> <button class="btn btn-sm btn-success" disabled data-bs-toggle="button" >Confirmed</button>
+        <a class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to cancel this appointment?')"
+        name="cancel_button" href="{% url 'user_cancel_appointment' a.id  %}">Cancel</a></td>
+        {% elif a.status == 2 %}
+        <td> <button class="btn btn-sm btn-danger" disabled data-bs-toggle="button" >Rejected</button></td>
+        {% elif a.status == 3 %}
+        <td> <button class="btn btn-sm btn-danger" disabled data-bs-toggle="button" >Cancelled</button></td>
+        {% elif a.status == 4 %}
+        <td> <button class="btn btn-sm btn-success" disabled data-bs-toggle="button">Finished</button></td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <a type="button" class="btn btn-info" href="/user_book_appointment" style="margin-left: 80%; margin-top:2%; margin-bottom: 5%;" >Book new appointment</a>
+
+</div>
+{% endblock content %}
