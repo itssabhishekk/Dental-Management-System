@@ -12,6 +12,8 @@
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
+	<script src="https://kit.fontawesome.com/791a6ff1d5.js" crossorigin="anonymous"></script>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -46,6 +48,11 @@
 		  </div>
 		</div>
 	  </nav>
+	  {% for message in messages %}
+	  <div class="alert alert-{{ message.tags }}" role="alert" style="text-align: center;">
+		  {{ message }}
+		</div>
+	  {% endfor %}
       <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -87,13 +94,13 @@
 						<div class="about-title"> We create beautiful and brighter smiles </div>
 						<div class="about-description">
 							<p>
-								Urna habitasse imperdiet! Aut, deleniti nisl, varius? Nunc, iure iure nunc sit mi ducimus atque nostrum iure ducimus quae dolore. Massa sapien at do ipsum nostra adipisicing.
+								We, at Phulchowki Dental Clinic, assure you to give you the best dental treatment as possible. We believe in serving our patients. 
 							</p>
 							<p>
-								rutrum fugiat doloribus, dolor, ipsa commodi doloremque do senectus neque molestiae dis nisi euismod, diam illo incididunt dignissim expedita.
+								With our expert team, we believe we can serve you at a very affordable rate with a guaranteed success.
 							</p>
 						</div>
-						<h4 class="dr-name"> Dr. Prasamsha Khadka </h4>
+						<h4 class="dr-name"> Dr. Prashamsa Khadka </h4>
 						<p class="dr-prof"> Dental Surgeon </p>
 					</div>
 				</div>
@@ -101,7 +108,7 @@
 		</div>
 	</section>
 
-	<section id="services" class="clearfix service-section">
+	<section class="clearfix service-section">
 		<div class="section-container">
 			<div class="container">
 				<div class="row">
@@ -121,7 +128,7 @@
 
 							<h5> Highly trained dental team </h5>
 
-							<p> Litora nostrum ab iaculis sagittis, dolores! Sociis vestibulum mus aperiam! Assumenda! </p>
+							<p> All of our doctors are professional and very well trained with lots of experience. </p>
 						</div>
 					</div>
 
@@ -131,7 +138,7 @@
 
 							<h5> Advance treatment </h5>
 
-							<p> Litora nostrum ab iaculis sagittis, dolores! Sociis vestibulum mus aperiam! Assumenda! </p>
+							<p> We perform highly advanced treatment at a regular rate so that we can see you smile. </p>
 						</div>
 					</div>
 
@@ -141,7 +148,7 @@
 
 							<h5> Guaranteed results </h5>
 
-							<p> Litora nostrum ab iaculis sagittis, dolores! Sociis vestibulum mus aperiam! Assumenda! </p>
+							<p> We assure you that our services are first class and will fulfill all of your needs. </p>
 						</div>
 					</div>
 
@@ -151,7 +158,7 @@
 
 							<h5> Modern tech & equipment </h5>
 
-							<p> Litora nostrum ab iaculis sagittis, dolores! Sociis vestibulum mus aperiam! Assumenda! </p>
+							<p> All of our equipments are modern and imported so that we can give you the best treatment. </p>
 						</div>
 					</div>
 				</div>
@@ -178,7 +185,7 @@
 		</div>
 	</section>
 
-	<section class="work-sections">
+	<section class="work-sections" id="services">
 		<div class="section-container">
 			<div class="container">
 				<div class="row">
@@ -263,10 +270,10 @@
 				<div class="row">
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
 						<div class="reviews-wrapper">
-							<img src="static/img/dorothy-free-img.png" alt="Ushaan" title="Ushaan"/>
+							<img src="static/img/ushaans.png" alt="Ushaan" style="padding-left: 10%;" title="Ushaan"/>
 							<img src="static/img/quote-free-img.png"/>
 
-							<h5> Ushaan Shrestha, Dharan </h5>
+							<h5> Ushaan Shrestha, Kathmandu </h5>
 
 							<p> <em> “I really loved the atmosphere here. The doctors are really skilled and very friendly. I am definitely recommending everyone to visit Phulchowki Dental Clinic for all their dental services !” </em> </p>
 						</div>
@@ -274,10 +281,10 @@
 
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
 						<div class="reviews-wrapper">
-							<img src="static/img/randy-free-img.png" alt="Ram Bahadur" title="Ram Bahadur"/>
+							<img src="static/img/oshriyam.png" alt="Oshriya" style="padding-left: 10%;" title="Oshriya"/>
 							<img src="static/img/quote-free-img.png"/>
 
-							<h5> Ram Bahadur, Butwal </h5>
+							<h5> Oshriya Manandhar, Lalitpur</h5>
 
 							<p> <em> “Their services is just absolutely fabulous. I had a really bad teeth and it was easily fixed without any pain by the wonderful doctors present here. The web application is also very helpful and very easy to use which makes this clinic my number one go to for any of my teeth related problems !” </em> </p>
 						</div>
@@ -319,11 +326,27 @@
 					</div>
 				</div>
 
-				<div style="border-radius: 10px;"> 
-						<div>
-							<!-- Tag for map with Phulchowki Dental Clinic's location pinned -->
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1767.479015836289!2d85.34640751748037!3d27.625816429544248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1747d50befe9%3A0xf7bb4fe8f490a215!2sDental%20Clinic!5e0!3m2!1sen!2snp!4v1644596561862!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>						</div>
-			</div>
+				<div class="row form">
+
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+						<div id="sendmessage"> Your message has been sent. Thank you! </div>
+
+						<div id="errormessage"></div>
+
+						<form action="" method="POST" class="text-center">
+							<h3> Contact Us </h3>
+
+								{% csrf_token %}
+						
+								{{ form.as_p }}
+						
+								<button type="submit" value="Submit" style="margin-bottom: 3%;" class="btn btn-info" onclick="return confirm('Are you sure you want to submit?')">Submit</button>
+								<br />
+						
+							</form>
+					</div>
+
+				</div>
 		</div>
 	</section>
 
@@ -337,11 +360,11 @@
 				</div>
 
 				<div class="row social-icon-wrapper">
-					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-						<a href="#" class="social-icon"> <i class="fa fa-instagram"></i> </a>
-						<a href="#" class="social-icon"> <i class="fa fa-twitter"></i> </a>
-						<a href="#" class="social-icon"> <i class="fa fa-linkedin"></i> </a>
-						<a href="#" class="social-icon"> <i class="fa fa-google-plus"></i> </a>
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12" style="padding-left: 5%; margin-bottom: -5%;">
+						<a href="https://www.instagram.com" style="color: #31b3cd" target="_blank" class="social-icon"> <i class="fa fa-instagram"></i> </a>
+						<a href="https://www.twitter.com" style="color: #31b3cd" target="_blank" class="social-icon"> <i class="fa fa-twitter"></i> </a>
+						<a href="https://www.linkedin.com" style="color: #31b3cd" target="_blank" class="social-icon"> <i class="fa fa-linkedin"></i> </a>
+						<a href="https://www.facebook.com" style="color: #31b3cd"  target="_blank" class="social-icon"> <i class="fa fa-facebook"></i> </a>
 					</div>
 				</div>
 			</div>

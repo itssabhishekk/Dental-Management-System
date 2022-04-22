@@ -67,3 +67,13 @@ class Report(models.Model):
         return self.appointment.patientUser.user.first_name+" "+self.appointment.patientUser.user.last_name+"  ("+str(self.appointment.date)+")  ("+str(self.appointment.time)+")"
 
 
+class contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    subject = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=15)
+    message = models.TextField()
+
+
+    def __str__(self):
+        return self.name

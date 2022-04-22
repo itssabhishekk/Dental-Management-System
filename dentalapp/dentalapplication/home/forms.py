@@ -5,6 +5,7 @@ from .models import PatientUser
 from .models import Doctor
 from .models import Appointment
 from .models import Report
+from .models import contact
 from django.contrib.auth.models import User
 
 
@@ -118,3 +119,25 @@ class ServiceForm(forms.ModelForm):
             'description': forms.Textarea(attrs={'class': 'form-control'}),
 
         }
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = contact
+        fields =  ('name', 'email', 'subject', 'phone_number', 'message')
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Full Name'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
+            'subject': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Subject'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Phone Number'}),
+            'message': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Message'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(ContactForm, self).__init__(*args, **kwargs)
+        self.fields['name'].label = ""
+        self.fields['email'].label = ""
+        self.fields['subject'].label = ""
+        self.fields['phone_number'].label = ""
+        self.fields['message'].label = ""
+

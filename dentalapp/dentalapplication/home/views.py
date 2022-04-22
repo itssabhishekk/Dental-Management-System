@@ -14,6 +14,7 @@ from .forms import ReportForm
 from .forms import PatientUserForm
 from .forms import PatientForm
 from .forms import ServiceForm
+from .forms import ContactForm
 
 from django.contrib.auth.models import Group
 from django.http import HttpResponseRedirect
@@ -28,10 +29,18 @@ from django.db.models import Q
 
 
 # Create your views here.
+
+
 def home(request):
-    return render(request, 'home.html')
-
-
+    form = ContactForm()
+    if request.method == "POST" or None:
+        form = ContactForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Form successfully submitted. Our team will reach out to you soon.')
+            return HttpResponseRedirect('/#')
+    context = {'form': form}
+    return render(request, 'home.html', context) 
 
 def signup(request):
     userForm=PatientUserForm()
