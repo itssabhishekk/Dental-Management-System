@@ -10,11 +10,11 @@ Doctors
     <div class="container">
       <div class="row">
         {% for d in doctors %}
-        <div class="col" style="margin-bottom: 40px;">
+        <div class="col" style="margin-bottom: 40px; margin-left: 20px;">
 
           <div class="card text-dark bg-light mb-3" style="width: 18rem;">
 
-            <img src="{% static d.profile_picture .url %}" width="40px" height="200px" class="card-img-top" alt="...">
+            <img src="{% static d.profile_picture .url %}" width="40px" height="300px" class="card-img-top" alt="...">
             <div class="card-body">
 
               <h5 class="card-title">Dr. {{d.full_name}}</h5>

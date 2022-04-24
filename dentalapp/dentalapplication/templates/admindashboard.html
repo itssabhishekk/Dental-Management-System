@@ -56,5 +56,40 @@ Dashboard
         </div>
       </div>
     </div>
+  
+
+        <div style="margin-left:1%; ">
+          <div class="panel-heading" style="text-align:center;">
+            <h4 class="panel-title">Upcoming Appointments</h4><br>
+          </div>
+          <table class="table table-bordered">
+            <thead > 
+            <tr>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Service</th>
+              <th>Doctor</th>
+              <th>Description</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          {% for a in appointment %}
+          <tr>
+            <td> {{a.patientUser}}</td>
+            <td>{{a.date}}</td>
+            <td>{{a.time}}</td>
+            <td>{{a.service}}</td>
+            <td>{{a.doctor}}</td>
+            <td>{{a.description}}</td>
+            <td> <button class="btn btn-sm btn-warning" disabled data-bs-toggle="button" >Confirmed</button></td>
+          </tr>
+          {% endfor %}
+          </table>
+        </div>
+        <a type="button" class="btn btn-secondary" href="/admin_view_appointment" style="margin-left: 43%;" >View all appointments</a>
+
+      </div>
+    </div>
   </div>
   {% endblock content %}

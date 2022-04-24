@@ -15,22 +15,15 @@ from .forms import PatientUserForm
 from .forms import PatientForm
 from .forms import ServiceForm
 from .forms import ContactForm
-
 from django.contrib.auth.models import Group
 from django.http import HttpResponseRedirect
-from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required,user_passes_test
-from datetime import datetime,timedelta,date
-from django.conf import settings
-from django.db.models import Q
 
 
 
 
 
-# Create your views here.
-
-
+#View for Home page. Created a contact form for the contact us page.
 def home(request):
     form = ContactForm()
     if request.method == "POST" or None:
@@ -42,6 +35,7 @@ def home(request):
     context = {'form': form}
     return render(request, 'home.html', context) 
 
+#View for User Registration page. 
 def signup(request):
     userForm=PatientUserForm()
     patientForm=PatientForm()
@@ -56,7 +50,7 @@ def signup(request):
             patient=patientForm.save()
             patient.user=user
             patient.save()
-            my_patient_group = Group.objects.get_or_create(name='PATIENT')
+            my_patient_group = Group.objects.get_or_create(name='PATIENT') #Setting user type as patient.
             my_patient_group[0].user_set.add(user)
         else:
             messages.error(request, 'Invalid Details! Please fill again.')
@@ -65,15 +59,19 @@ def signup(request):
         return HttpResponseRedirect('login')
     return render(request,'signup.html',context=mydict)
 
+#View for Logout. 
 def logout(request):
     auth.logout(request)
     return redirect('/login')
 
+#To compare whether the user is admin or patient for the authentication. 
 def is_admin(user):
     return user.groups.filter(name='ADMIN').exists()
 def is_patient(user):
     return user.groups.filter(name='PATIENT').exists()
 
+
+#View for User Login page and validation. 
 def login(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -90,7 +88,7 @@ def login(request):
     else:
         return render(request, 'login.html')
         
-
+#View for Admin Login page and validation. 
 def adminlogin(request):
     if request.method == "POST":
         username = request.POST['adminusername']
@@ -107,14 +105,17 @@ def adminlogin(request):
     else:
         return render(request, 'adminlogin.html')
 
-#For User
-@login_required(login_url='/login')
-@user_passes_test(is_patient)
+#For User Side
+
+#For the base of the user that is the side bar.
+@login_required(login_url='/login') #Decorators for authentication
+@user_passes_test(is_patient) #Checking if the user is patient or not
 def userbase(request):
-    patientUser = PatientUser.objects.get(user=request.user.id)
+    patientUser = PatientUser.objects.get(user=request.user.id) #To get the profile picture of user in the side bar.
     return render(request, 'userbase.html', {'patientUser': patientUser})
 
 
+#View for User Dashboard. Calculating the total count of report of user, user's finished and pending appointment and the doctor and service count available.
 @login_required(login_url='/login')
 @user_passes_test(is_patient)
 def userdashboard(request):
@@ -122,24 +123,29 @@ def userdashboard(request):
     doctorscount=Doctor.objects.all().count()
     reportcount=Report.objects.filter(appointment__patientUser=patientUser).all().count()
     servicecount=Service.objects.all().count()
-    appointmentcount = Appointment.objects.all().filter(patientUser=patientUser).count()
+    appointment=Appointment.objects.all().filter(patientUser=patientUser,status=1)
+    finishedappointmentcount = Appointment.objects.all().filter(patientUser=patientUser, status=4).count()
     pendingappointmentcount = Appointment.objects.all().filter(patientUser=patientUser,status=0 ).count()
     mydict={
+    'appointment': appointment,
     'patientUser':patientUser,
     'doctorscount':doctorscount,
     'reportcount': reportcount, 
     'servicecount': servicecount,
-    'appointmentcount':appointmentcount,
+    'finishedappointmentcount':finishedappointmentcount,
     'pendingappointmentcount':pendingappointmentcount,
     }
     return render(request,'userdashboard.html', mydict)
 
+
+#View for User Appointment Page where user can navigate through appointment views.
 @login_required(login_url='/login')
 @user_passes_test(is_patient)
 def userappointment(request):
     patientUser = PatientUser.objects.get(user=request.user.id)
     return render(request,'userappointment.html', {'patientUser':patientUser})
 
+#View for User Appointment Form Page and validation. 
 @login_required(login_url='/login')
 @user_passes_test(is_patient)
 def user_book_appointment(request):
@@ -157,7 +163,7 @@ def user_book_appointment(request):
 
     return render(request,'user_book_appointment.html', {'form':form, 'patientUser':patientUser,})
 
-
+#View for seeing all of user's appointment.
 @login_required(login_url='/login')
 @user_passes_test(is_patient)
 def user_view_appointment(request):
@@ -165,7 +171,7 @@ def user_view_appointment(request):
     appointment = Appointment.objects.filter(patientUser=patientUser).all()
     return render(request,'user_view_appointment.html', {'appointment':appointment ,'patientUser':patientUser})
 
-
+#View for seeing all the doctors available.
 @login_required(login_url='/login')
 @user_passes_test(is_patient)
 def user_view_doctors(request):
@@ -173,13 +179,15 @@ def user_view_doctors(request):
     doctors = Doctor.objects.all
     return render(request,'user_view_doctors.html',{'doctors':doctors ,'patientUser':patientUser})
 
+#View for seeing all of user's report.
 @login_required(login_url='/login')
 @user_passes_test(is_patient)
 def user_view_reports(request):
     patientUser = PatientUser.objects.get(user=request.user.id)
     reports = Report.objects.filter(appointment__patientUser=patientUser).all()
     return render(request,'user_view_reports.html', {'reports':reports , 'patientUser':patientUser})
-    
+
+#View for seeing all of the services available.
 @login_required(login_url='/login')
 @user_passes_test(is_patient)
 def user_view_services(request):
@@ -187,6 +195,7 @@ def user_view_services(request):
     services = Service.objects.all
     return render(request,'user_view_services.html', {'services':services , 'patientUser':patientUser})
 
+#View for seeing all of user's profile.
 @login_required(login_url='/login')
 @user_passes_test(is_patient)
 def user_view_profile(request):
@@ -194,6 +203,7 @@ def user_view_profile(request):
     Patient = PatientUser.objects.filter(user=request.user)
     return render(request,'user_view_profile.html', {'patientUser':patientUser, 'Patient':Patient})
 
+#View to cancel user's pending or confirmed appointment.
 @login_required(login_url='/login')
 @user_passes_test(is_patient)
 def user_cancel_appointment(request, pk):
@@ -203,6 +213,7 @@ def user_cancel_appointment(request, pk):
     messages.warning(request, 'Booking cancelled.')
     return redirect('user_view_appointment')
 
+#View for user to edit their data and its validation.
 @login_required(login_url='/login')
 @user_passes_test(is_patient)
 def user_edit_profile(request):
@@ -222,21 +233,28 @@ def user_edit_profile(request):
     return render(request, 'user_edit_profile.html', context)
  
 
-#For Admin
-@login_required(login_url='/adminlogin')
-@user_passes_test(is_admin)
+#For Admin Side
+
+
+
+#For the base of the user that is the side bar.
+@login_required(login_url='/adminlogin') #Decorators for authentication
+@user_passes_test(is_admin) #Checking if the user is admin or not
 def adminbase(request):
     return render(request, 'adminbase.html')
 
+#Admin's dashboard where we can see the total doctor, service, patient and appointment count along with the upcoming appointments.
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def admindashboard(request):
+    appointment=Appointment.objects.all().order_by('-id').filter(status=1)
     doctorcount=Doctor.objects.all().count()
     patientcount=PatientUser.objects.all().count()
     servicecount=Service.objects.all().count()
     appointmentcount = Appointment.objects.all().filter(status__gte=1).count()
     pendingappointmentcount = Appointment.objects.all().filter(status=0).count()
     mydict={
+    'appointment':appointment,
     'doctorcount':doctorcount,
     'patientcount': patientcount, 
     'servicecount': servicecount,
@@ -245,11 +263,14 @@ def admindashboard(request):
     }
     return render(request,'admindashboard.html', context=mydict)
 
+#View for Admin Appointment Page where user can navigate through appointment views.
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def adminappointment(request):
     return render(request,'adminappointment.html')
 
+
+#View for Admin Appointment Form Page and validation. 
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def admin_book_appointment(request):
@@ -263,12 +284,14 @@ def admin_book_appointment(request):
 
     return render(request,'admin_book_appointment.html', {'form':form})
 
+#View for seeing all of user appointment.
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def admin_view_appointment(request):
     appointments = Appointment.objects.all().filter(status__gte=1)
     return render(request,'admin_view_appointment.html', {'appointment':appointments})
 
+#View for deleting the selected appointment.
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def delete_appointment (request, pk):
@@ -277,12 +300,14 @@ def delete_appointment (request, pk):
     messages.danger(request, 'Appointment deleted.')
     return redirect('admin_view_appointment')
 
+#View for viewing all the pending appointment list.
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def admin_approve_appointment(request):
     appointments = Appointment.objects.all().filter(status=0)
     return render(request,'admin_approve_appointment.html', {'appointment':appointments})
 
+#View for approving the pending appointment.
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def approve_appointment(request, pk):
@@ -292,6 +317,7 @@ def approve_appointment(request, pk):
     messages.success(request, 'Booking approved.')
     return redirect('admin_view_appointment')
 
+#View for rejecting the pending appointment.
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def reject_appointment(request, pk):
@@ -301,15 +327,17 @@ def reject_appointment(request, pk):
     messages.warning(request, 'Booking rejected.')
     return redirect('admin_view_appointment')
 
+#View for canceling the confirmed appointment.
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def admin_cancel_appointment(request, pk):
     appointments = Appointment.objects.get(pk=pk)
-    appointments.status=4
+    appointments.status=3
     appointments.save()
     messages.warning(request, 'Booking cancelled.')
     return redirect('admin_view_appointment')
 
+#View for finishing the finished appointment.
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def finish_appointment(request, pk):
@@ -319,13 +347,14 @@ def finish_appointment(request, pk):
     messages.success(request, 'Booking finished.')
     return redirect('admin_view_appointment')
 
+#View for viewing all the doctors in the database.
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def admin_view_doctors(request):
     doctors = Doctor.objects.all
     return render(request,'admin_view_doctors.html',{'doctors':doctors})
 
-
+#View for removing the doctor from the database.
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def delete_doctor(request, pk):
@@ -334,6 +363,8 @@ def delete_doctor(request, pk):
     messages.warning(request, 'Doctor removed.')
     return redirect('admin_view_doctors')
 
+
+#View for adding doctors to the database and validation
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def admin_add_doctors(request):
@@ -348,6 +379,7 @@ def admin_add_doctors(request):
     context = {'form': form}
     return render(request,'admin_add_doctors.html', context)
 
+#View for updating existing doctors and validation
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def update_doctor(request, pk):
@@ -363,13 +395,15 @@ def update_doctor(request, pk):
     return render(request,'admin_add_doctors.html', context)
 
 
-
+#View for viewing all the user reports.
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def admin_view_reports(request):
     reports = Report.objects.all
     return render(request,'admin_view_reports.html', {'reports':reports})
 
+
+#View for removing the selected data from the database.
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def delete_report(request, pk):
@@ -378,6 +412,8 @@ def delete_report(request, pk):
     messages.warning(request, 'Report deleted.')
     return redirect('admin_view_reports')
 
+
+#View for adding reports to the database and validation
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def admin_add_reports(request):
@@ -393,7 +429,7 @@ def admin_add_reports(request):
     context = {'form': form, 'appointment': appointment}
     return render(request,'admin_add_reports.html', context)
    
-
+#View for updating the selected report and validation.
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def update_report(request, pk):
@@ -408,12 +444,15 @@ def update_report(request, pk):
     context = {'form': form}
     return render(request,'admin_add_reports.html', context)
 
+
+#View for seeing all the users
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def admin_view_users(request):
     patientUsers = PatientUser.objects.all
     return render(request,'admin_view_users.html', {'patientUser':patientUsers})
 
+#View for removing the selected users from the database
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def delete_patientUser(request, pk):
@@ -422,12 +461,15 @@ def delete_patientUser(request, pk):
     messages.warning(request, 'User has been removed.')
     return redirect('admin_view_users')
 
+#View for seeing all the services
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def admin_view_services(request):
     services = Service.objects.all
     return render(request,'admin_view_services.html',  {'services':services})
 
+
+#View for adding service to the database and validation
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def admin_add_services(request):
@@ -442,6 +484,7 @@ def admin_add_services(request):
 
     return render(request,'admin_add_services.html', {'form':form})
 
+#View for updating service in the database and validation
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def update_service(request, pk):
@@ -457,7 +500,7 @@ def update_service(request, pk):
     return render(request,'admin_add_services.html', context)
 
 
-
+#View for deleting the selected service
 @login_required(login_url='/adminlogin')
 @user_passes_test(is_admin)
 def delete_service(request, pk):

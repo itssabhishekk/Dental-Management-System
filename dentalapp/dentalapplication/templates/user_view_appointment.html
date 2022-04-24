@@ -36,8 +36,7 @@ Your Appointments
         <td>{{a.doctor}}</td>
         <td>{{a.description}}</td>
         {%if a.status == 0 %}
-        <td> <button class="btn btn-sm btn-primary" disabled data-bs-toggle="button">Pending</button>
-        <a class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to cancel this appointment?')"
+        <td> <button class="btn btn-sm btn-primary" disabled data-bs-toggle="button">Pending</button> <a class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to cancel this appointment?')"
         name="cancel_button" href="{% url 'user_cancel_appointment' a.id  %}">Cancel</a></td>
         {% elif a.status == 1 %}
         <td> <button class="btn btn-sm btn-success" disabled data-bs-toggle="button" >Confirmed</button>
