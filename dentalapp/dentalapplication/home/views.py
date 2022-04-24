@@ -386,7 +386,6 @@ def admin_add_reports(request):
     if request.method == "POST":
         form = ReportForm(request.POST)
         if form.is_valid():
-            print("000000000000")
             form.save()
             messages.success(request, 'Report added successfully.')
             return HttpResponseRedirect('/admin_view_reports')

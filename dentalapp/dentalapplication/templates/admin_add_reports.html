@@ -5,7 +5,7 @@ Add Reports
 {% endblock title %}
 {% block content %}
 {% for message in messages %}
-<div class="alert alert-{{ message.tags }}" role="alert" style="text-align: center;">
+<div class="alert alert-{{ message.tags }}" style="color:red    " role="alert" style="text-align: center;">
     {{ message }}
   </div>
 {% endfor %}
@@ -14,6 +14,16 @@ Add Reports
     .form-control{
         width: 50%;
         display: inline-block;
+    }
+    .errorlist
+    {
+        color: white;
+        border: 2px solid red;
+        border-radius: 5px;
+        list-style-type: none;
+        background: linear-gradient(135deg, #fc685d 60%, red);
+        padding-top:5px;
+        padding-bottom:5px;
     }
 </style>
 <h1 class="text-center" style="margin-top: 40px;">Add Reports</h1>

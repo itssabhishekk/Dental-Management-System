@@ -93,8 +93,8 @@ class DoctorForm(ModelForm):
 class ReportForm(forms.ModelForm):
     class Meta:
         model = Report
-        fields =  ('appointment', 'problems', 'prescription', 'other_details')
 
+        fields =  ('appointment', 'problems', 'prescription', 'other_details')
         widgets = {
             'appointment': forms.Select(attrs={'class': 'form-control'}),
             'problems': forms.Textarea(attrs={'class': 'form-control'}),
