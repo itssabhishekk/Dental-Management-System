@@ -35,7 +35,7 @@ All Appointments
           <td>{{a.description}}</td>
           {% if a.status == 1 %}
           <td> <button class="btn btn-sm btn-warning" disabled data-bs-toggle="button" >Confirmed</button>
-          <a class="btn btn-success btn-sm" onclick="return confirm('Are you sure you want to approve this appointment?')"
+          <a class="btn btn-success btn-sm" onclick="return confirm('Are you sure this appointment is finished?')"
             name="finish_button" href="{% url 'finish_appointment' a.id  %}">Finish</a>
           <a class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to cancel this appointment?')"
             name="cancel_button" href="{% url 'admin_cancel_appointment' a.id  %}">Cancel</a></td>

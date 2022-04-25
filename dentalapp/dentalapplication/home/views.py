@@ -191,7 +191,7 @@ def user_view_reports(request):
 @login_required(login_url='/login')
 @user_passes_test(is_patient)
 def user_view_services(request):
-    patientUser = PatientUser.objects.get(user=request.user.id)
+    patientUser = PatientUser.objects.get(user=request.user.id) #to get logged in user's image 
     services = Service.objects.all
     return render(request,'user_view_services.html', {'services':services , 'patientUser':patientUser})
 
@@ -244,8 +244,8 @@ def adminbase(request):
     return render(request, 'adminbase.html')
 
 #Admin's dashboard where we can see the total doctor, service, patient and appointment count along with the upcoming appointments.
-@login_required(login_url='/adminlogin')
-@user_passes_test(is_admin)
+@login_required(login_url='/adminlogin') #Decorators for authentication
+@user_passes_test(is_admin) #Checking if the user is admin or not
 def admindashboard(request):
     appointment=Appointment.objects.all().order_by('-id').filter(status=1)
     doctorcount=Doctor.objects.all().count()
