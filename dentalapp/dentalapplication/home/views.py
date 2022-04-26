@@ -1,4 +1,3 @@
-import profile
 from django.shortcuts import redirect, render, HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
